@@ -21,6 +21,8 @@ class FavCity extends StatefulWidget {
 
 class _FavCity extends State<FavCity> {
   String city = "";
+  static var currencies = ["rupees", "dollars", "euros"];
+  var selected = currencies[0];
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +47,24 @@ class _FavCity extends State<FavCity> {
               ),
             ),
             Padding(
-                padding: EdgeInsets.all(20),
-                child: Text("Your favourite city is $city"))
+              padding: EdgeInsets.all(20),
+              child: Text(
+                  "Your favourite city is ${city.length > 1 ? city : selected}"),
+            ),
+            DropdownButton<String>(
+              items: currencies
+                  .map((item) => DropdownMenuItem<String>(
+                        child: Text(item),
+                        value: item,
+                      ))
+                  .toList(),
+              onChanged: (String val) {
+                setState(() {
+                  selected = val;
+                });
+              },
+              value: selected,
+            )
           ],
         ),
       ),
