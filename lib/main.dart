@@ -27,8 +27,10 @@ class _FavCity extends State<FavCity> {
     return Scaffold(
       appBar: AppBar(
         title: Text("My Fav City"),
+        backgroundColor: Colors.pink,
       ),
       body: Container(
+        margin: EdgeInsets.all(20),
         child: Column(
           children: <Widget>[
             TextField(
@@ -37,8 +39,14 @@ class _FavCity extends State<FavCity> {
                   city = string;
                 });
               },
+              decoration: InputDecoration(
+                hintText: "Enter your favourite city",
+                labelText: "City",
+              ),
             ),
-            Text("Your favourite city is $city")
+            Padding(
+                padding: EdgeInsets.all(20),
+                child: Text("Your favourite city is $city"))
           ],
         ),
       ),
